@@ -7,13 +7,15 @@ public class J_toBinary_pass {
         BufferedReader br = new BufferedReader(
             new InputStreamReader(System.in)
         );
+        // T = número de casos de prueba
         int T = Integer.parseInt(br.readLine());
         if (T > 0 && T <= 1000) {
             for (int j = 0; j < T; j++) {
-                // n puede ser muy grande, por eso long
+                // n = número decimal a convertir (puede ser muy grande, por eso long)
                 long n = Long.parseLong(br.readLine());
-                // Convertimos a binario como string
+                // binaryN = representación binaria del número
                 String binaryN = toBinaryNum(n);
+                // aux = contador de unos en el binario
                 int aux = 0;
                 // Contamos cuántos '1' tiene la representación binaria
                 for (int i = 0; i < binaryN.length(); i++) {

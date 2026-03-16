@@ -1,4 +1,4 @@
-// (Ejercicio J)
+// (Ejercicio B)
 import java.io.*;
 import java.util.*;
 
@@ -8,13 +8,16 @@ public class B_hiddenNames_pass {
         BufferedReader br = new BufferedReader(
             new InputStreamReader(System.in)
         );
-
+        // T = número de casos de prueba
         int T = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < T; i++) {
+            // s1 = primer string a comparar
             String s1 = br.readLine();
+            // s2 = segundo string a comparar
             String s2 = br.readLine();
 
+            // Limpiamos espacios y pasamos a minúsculas
             String sClean = s1.replace(" ", "").toLowerCase();
             String s2Clean = s2.replace(" ", "").toLowerCase();
 
@@ -30,6 +33,7 @@ public class B_hiddenNames_pass {
             Arrays.sort(chars2);
             String sorted2 = new String(chars2);
 
+            // Si los strings ordenados son iguales, son anagramas (nombres ocultos)
             if (sorted1.equals(sorted2)) {
                 System.out.println("Case " + (i + 1) + ": Yes");
             } else {
@@ -38,3 +42,7 @@ public class B_hiddenNames_pass {
         }
     }
 }
+
+// La lógica es así: Para saber si un nombre está "oculto" en otro (ignorando espacios y mayúsculas),
+// simplemente limpiamos ambos strings, los ordenamos alfabéticamente y comparamos si son idénticos.
+// Si al ordenar los caracteres obtenemos lo mismo, significa que ambos tenían las mismas letras.
