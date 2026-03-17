@@ -1,5 +1,5 @@
+// (Ejercicio F)
 import java.io.*;
-import java.util.HashMap;
 
 public class F_Parallelogram {
 
@@ -8,43 +8,57 @@ public class F_Parallelogram {
             new InputStreamReader(System.in)
         );
 
-        long T = Long.parseLong(br.readLine());
+        // T = número de casos de prueba
+        int T = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < T; i++) {
-            HashMap<String, Double> points = new HashMap<>();
+            // Leemos las coordenadas de los 3 puntos conocidos: A(x,y), B(x,y) y C(x,y)
+            String[] userInput = br.readLine().split("\\s+");
+            double Ax = Double.parseDouble(userInput[0]);
+            double Ay = Double.parseDouble(userInput[1]);
+            double Bx = Double.parseDouble(userInput[2]);
+            double By = Double.parseDouble(userInput[3]);
+            double Cx = Double.parseDouble(userInput[4]);
+            double Cy = Double.parseDouble(userInput[5]);
 
-            points.put("Ax", Double.parseDouble(br.readLine()));
-            points.put("Ay", Double.parseDouble(br.readLine()));
-            points.put("Bx", Double.parseDouble(br.readLine()));
-            points.put("By", Double.parseDouble(br.readLine()));
-            points.put("Cx", Double.parseDouble(br.readLine()));
-            points.put("Cy", Double.parseDouble(br.readLine()));
+            // Calculamos la cuarta coordenada (D) usando suma/resta de vectores
+            double Dx = Cx - (Bx - Ax);
+            double Dy = Cy - (By - Ay);
 
-            double Dx =
-                points.get("Cx") - (points.get("Bx") - points.get("Ax"));
-            double Dy =
-                points.get("Cy") - (points.get("By") - points.get("Ay"));
+            // Calculamos el área del paralelogramo usando el producto cruz de vectores adyacentes (AB y AD)
+            double Area = Math.abs(
+                (Bx - Ax) * (Dy - Ay) - (By - Ay) * (Dx - Ax)
+            );
 
-            System.out.println(Dx);
-            System.out.println(Dy);
+            // Imprimimos el caso, las coordenadas de D y el Área (redondeados)
+            System.out.println(
+                "Case " +
+                    (i + 1) +
+                    ": " +
+                    Math.round(Dx) +
+                    " " +
+                    Math.round(Dy) +
+                    " " +
+                    Math.round(Area)
+            );
         }
     }
 }
 
-/*
-
-3
-distancia X = Bx - Ax
-
-Dx = Cx - (Bx - Ax)
-Dy = Cy - (By - Ay)
-
-
-(Dx + distancia X = )
-
-Ax Ay Bx By Cx Cy
-0  0  10 0  10 10
-0 0 10 0 10 -20
--12 -10 21 21 1 40
-
-*/
+// La lógica es así: Dado un paralelogramo con vértices A, B, C y D en orden consecutivo, se busca hallar D y el Área.
+//
+// 1. Cómo encontrar la coordenada faltante (D): 
+//    En un paralelogramo, los lados opuestos son paralelos y miden lo mismo (son el mismo vector). 
+//    Por lo tanto, el vector que va de A hacia B (AB) es idéntico al que va de D hacia C (DC).
+//    - Vector AB = (Bx - Ax, By - Ay)
+//    - Sabiendo que D + AB = C, podemos despejar D como D = C - AB. 
+//    - Matemáticamente: 
+//      Dx = Cx - (Bx - Ax) 
+//      Dy = Cy - (By - Ay)
+//
+// 2. Cómo calcular el Área:
+//    El área de un paralelogramo en un plano 2D se obtiene con el valor absoluto del producto cruz (o determinante) de dos vectores que comparten un vértice (por ejemplo, AB y AD).
+//    - Vector AB = (Bx - Ax, By - Ay)
+//    - Vector AD = (Dx - Ax, Dy - Ay)
+//    - Área = |(ABx * ADy) - (ABy * ADx)|
+//    - Reemplazando: Área = |(Bx - Ax) * (Dy - Ay) - (By - Ay) * (Dx - Ax)|
