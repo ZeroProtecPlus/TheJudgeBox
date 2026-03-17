@@ -1,7 +1,7 @@
 // (Ejercicio F)
 import java.io.*;
 
-public class F_Parallelogram {
+public class F_Parallelogram_pass {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(
@@ -47,13 +47,13 @@ public class F_Parallelogram {
 
 // La lógica es así: Dado un paralelogramo con vértices A, B, C y D en orden consecutivo, se busca hallar D y el Área.
 //
-// 1. Cómo encontrar la coordenada faltante (D): 
-//    En un paralelogramo, los lados opuestos son paralelos y miden lo mismo (son el mismo vector). 
+// 1. Cómo encontrar la coordenada faltante (D):
+//    En un paralelogramo, los lados opuestos son paralelos y miden lo mismo (son el mismo vector).
 //    Por lo tanto, el vector que va de A hacia B (AB) es idéntico al que va de D hacia C (DC).
 //    - Vector AB = (Bx - Ax, By - Ay)
-//    - Sabiendo que D + AB = C, podemos despejar D como D = C - AB. 
-//    - Matemáticamente: 
-//      Dx = Cx - (Bx - Ax) 
+//    - Sabiendo que D + AB = C, podemos despejar D como D = C - AB.
+//    - Matemáticamente:
+//      Dx = Cx - (Bx - Ax)
 //      Dy = Cy - (By - Ay)
 //
 // 2. Cómo calcular el Área:
