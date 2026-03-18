@@ -1,7 +1,7 @@
 // (Ejercicio K)
 import java.io.*;
 
-public class K_CircleSquare {
+public class K_CircleSquare_pass {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(
